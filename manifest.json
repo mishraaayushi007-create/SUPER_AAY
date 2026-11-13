@@ -1,0 +1,40 @@
+{
+  "name": "SUPER_AAY",
+  "short_name": "SUPER_AAY",
+  "description": "Mobile-First 100% Offline Superconductor Learning System",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#2c1a14",
+  "theme_color": "#4a2c22",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "192x192 512x512 any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "form_factor": "wide",
+      "label": "SUPER_AAY Desktop View"
+    },
+    {
+      "src": "./icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "form_factor": "narrow",
+      "label": "SUPER_AAY Mobile View"
+    }
+  ],
+  "categories": [
+    "education",
+    "science",
+    "utilities"
+  ]
+}

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+  <title>SUPER_AAY - The Superconductor Compendium</title>
+  
+  <!-- Offline PWA & Theme Meta -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+  <link rel="apple-touch-icon" href="./icon.svg">
+  <meta name="theme-color" content="#4a2c22">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="SUPER_AAY - A Sophisticated Curated Showcase of Superconducting Materials">
+
+  <!-- Local Editorial Stylesheet (Zero CDN / Zero External Network) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="app">
+
+    <!-- ==================== TOP EDITORIAL APP BAR ==================== -->
+    <header class="cryo-header">
+      <div class="brand-wrapper">
+        <div class="brand-icon-shield" title="Quantum Core">
+          <!-- Inline Quantum Orbit SVG -->
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+            <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(-30 12 12)"></ellipse>
+            <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(30 12 12)"></ellipse>
+            <circle cx="12" cy="12" r="2.5" fill="#38bdf8"></circle>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>SUPER_AAY</h1>
+          <span class="brand-subtitle">Superconductor Compendium</span>
+        </div>
+      </div>
+
+      <div class="offline-badge" title="100% Offline Capability">
+        <span class="offline-pulse"></span>
+        <span>100% OFFLINE</span>
+      </div>
+    </header>
+
+    <!-- ==================== TAB 1: EXPLORER VIEW ==================== -->
+    <main id="explorerTab" class="tab-view active">
+      
+      <!-- Top Hero Section with Rich Brownish Hues & Soft Wispy Pink Cryogenic Mist Overlay -->
+      <section class="editorial-hero">
+        <!-- Soft Wispy Pink Cryogenic Mist (Drifting across Brownish Hero & Blending into Pinkish-Beige Body) -->
+        <div class="pink-mist-container" aria-hidden="true">
+          <div class="mist-streak mist-streak-1"></div>
+          <div class="mist-streak mist-streak-2"></div>
+          <div class="mist-streak mist-streak-3"></div>
+          <div class="mist-streak mist-swirl"></div>
+          <div class="mist-bottom-blend"></div>
+        </div>
+
+        <div class="hero-content">
+          <span class="hero-kicker">Curated Database Showcase</span>
+          <h2 class="hero-headline">Explore the world of superconductors.</h2>
+          <p class="hero-narrative">
+            From Kamerlingh Onnes' mercury in 1911 to near-room-temperature clathrate hydrides at 250&nbsp;K. A curated archive of zero electrical resistance, Meissner magnetic levitation, and macroscopic quantum physics.
+          </p>
+
+          <!-- Smooth Anchor Scroll Button -->
+          <div class="hero-action-row">
+            <a href="#materialsShowcase" class="hero-scroll-btn" id="heroScrollBtn">
+              <span>Meet the materials.</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Quick Summary Stats Counters -->
+          <div class="hero-stats-rack">
+            <div class="stat-pill">
+              <span class="stat-num">10</span>
+              <span class="stat-lbl">Materials Cataloged</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-num">2</span>
+              <span class="stat-lbl">Superconductor Types</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-num">250 K</span>
+              <span class="stat-lbl">Highest T<sub>c</sub> (LaH₁₀)</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-num">0 Ω</span>
+              <span class="stat-lbl">Electrical Resistance</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Showcase Section Anchor & Cryo-Slider -->
+      <section id="materialsShowcase" class="materials-showcase-anchor">
+        <div class="showcase-header">
+          <div class="showcase-title-group">
+            <span class="section-kicker">Superconducting Portfolio</span>
+            <h2 class="section-heading">Meet the materials.</h2>
+          </div>
+          <span class="showcase-count-tag" id="catalogCountTag">10 Curated Specimens</span>
+        </div>
+
+        <!-- Interactive Cryo-Slider (Temperature Phase Simulator) -->
+        <div class="cryo-slider-box" id="cryoSliderBox">
+          <div class="cryo-slider-header">
+            <div class="cryo-slider-title-wrap">
+              <span class="cryo-slider-kicker">Interactive Phase Simulator</span>
+              <h3 class="cryo-slider-heading">Cryogenic Temperature Simulator</h3>
+            </div>
+            <div class="cryo-slider-readout-pill">
+              <span class="readout-label">Current Temp:</span>
+              <span class="readout-val" id="tempReadoutVal">300 K</span>
+              <span class="readout-state-tag" id="tempStateBadge">Room Temp</span>
+            </div>
+          </div>
+
+          <div class="cryo-slider-track-wrap">
+            <div class="slider-bound-wrap">
+              <span class="slider-bound bound-min">0 K <small>(Absolute Zero)</small></span>
+              <span class="slider-bound bound-max">300 K <small>(Ambient)</small></span>
+            </div>
+            <input type="range" id="cryoTempSlider" min="0" max="300" step="0.5" value="300" aria-label="Simulated temperature in Kelvin">
+          </div>
+
+          <div class="cryo-presets-row">
+            <span class="presets-kicker">Quick-Jump Presets:</span>
+            <div class="preset-buttons-group">
+              <button type="button" class="clay-btn preset-btn active" data-temp="300">Room Temp (300 K)</button>
+              <button type="button" class="clay-btn preset-btn" data-temp="77">Liquid Nitrogen (77 K)</button>
+              <button type="button" class="clay-btn preset-btn" data-temp="4.2">Liquid Helium (4.2 K)</button>
+              <button type="button" class="clay-btn preset-btn" data-temp="0">Absolute Zero (0 K)</button>
+            </div>
+          </div>
+
+          <div class="cryo-slider-status-bar">
+            <div class="status-indicator-count" id="superconductingCountTag">
+              <span class="status-pulse-dot" id="phasePulseDot"></span>
+              <span id="superconductingCountText">0 of 10 Materials in Zero-Resistance State</span>
+            </div>
+            <span class="status-hint">Drag slider left toward 0 K to cool specimens below their T<sub>c</sub></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Search & Clay Filter Zone -->
+      <section class="control-zone">
+        <div class="cryo-search-bar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search element, formula, or use..." autocomplete="off">
+          <button id="clearSearchBtn" class="clear-btn" style="display:none; background:none; border:none; color:var(--text-subtle); cursor:pointer;" aria-label="Clear search">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Puffy Tactile Clay Filter Pills -->
+        <div class="clay-chip-row" id="filterPills">
+          <button class="clay-btn active" data-filter="ALL">All (10)</button>
+          <button class="clay-btn" data-filter="Type-I">Type-I</button>
+          <button class="clay-btn" data-filter="Type-II">Type-II</button>
+          <button class="clay-btn" data-filter="Elemental Metal">Elemental</button>
+          <button class="clay-btn" data-filter="Cuprate">Cuprate (HTS)</button>
+          <button class="clay-btn" data-filter="Alloy">Alloy / Intermetallic</button>
+          <button class="clay-btn" data-filter="Pnictide-Hydride">Hydride &amp; Pnictide</button>
+        </div>
+      </section>
+
+      <!-- Bento Grid Material Catalog (Streamlined Minimal Preview Cards) -->
+      <section class="bento-container" id="materialGrid">
+        <!-- Dynamic Streamlined Cards rendered via app.js -->
+      </section>
+
+      <!-- Empty State Indicator -->
+      <div id="emptyCatalogState" style="display:none; text-align:center; padding:50px 20px; color:var(--text-muted);">
+        <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" fill="none" stroke-width="1.5" style="margin-bottom:12px;">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          <line x1="8" y1="11" x2="14" y2="11"></line>
+        </svg>
+        <p style="font-size:0.95rem; font-weight:700;">No superconducting materials match your filter.</p>
+        <button id="resetFiltersBtn" class="clay-btn" style="margin-top:14px;">Reset All Filters</button>
+      </div>
+
+      <!-- Floating Action Bar for Side-by-Side Compare Mode -->
+      <aside id="compareActionBar" class="compare-action-bar" style="display:none;" aria-live="polite">
+        <div class="compare-bar-content">
+          <div class="compare-bar-info">
+            <span class="compare-bar-badge" id="compareBadgeCount">0 / 2</span>
+            <span class="compare-bar-text" id="compareBarText">Select 2 materials to compare</span>
+          </div>
+          <div class="compare-bar-actions">
+            <button type="button" id="clearCompareBtn" class="clay-btn compare-clear-btn" title="Clear compare selection">Clear</button>
+            <button type="button" id="launchCompareBtn" class="clay-btn active compare-launch-btn" disabled>
+              <span>Compare Selected (0/2)</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- ==================== TAB 2: FLASHCARD FLIP DECK VIEW (ACTIVE RECALL) ==================== -->
+    <section id="flashcardsTab" class="tab-view" style="display:none; padding:24px 16px 84px 16px;">
+      <div class="flashcards-wrapper">
+
+        <!-- Flashcards Header & Recall Kicker -->
+        <div class="flashcards-header">
+          <div class="flashcards-title-group">
+            <span class="section-kicker">Active Recall Mode</span>
+            <h2 class="section-heading">Superconductor Flashcards</h2>
+          </div>
+          <p class="flashcards-subtitle">
+            Test your chemical formula and quantum property recall. Tap the card to flip and verify physical properties.
+          </p>
+        </div>
+
+        <!-- Mastery Counter & Filter Bar -->
+        <div class="flashcards-tracker-bar">
+          <div class="mastery-stat-col">
+            <div class="mastery-label-row">
+              <span class="mastery-label">Mastery Progress</span>
+              <span class="mastery-count-text" id="masteryCountText">0 / 10 Mastered (0%)</span>
+            </div>
+            <div class="mastery-progress-track">
+              <div class="mastery-progress-fill" id="masteryProgressFill" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <div class="flashcard-controls-row">
+            <button type="button" id="flashcardFilterBtn" class="clay-btn" data-filter="all">
+              <span>Filter: All (10)</span>
+            </button>
+            <button type="button" id="resetMasteryBtn" class="clay-btn" title="Reset all flashcard study progress">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" style="margin-right:4px;">
+                <path d="M2.5 2v6h6M21.5 22v-6h-6M22 11.5A10 10 0 0 0 3.2 7.2M2 12.5a10 10 0 0 0 18.8 4.3"></path>
+              </svg>
+              <span>Reset</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- CSS 3D Flashcard Flip Scene -->
+        <div class="flashcard-scene" id="flashcardScene" tabindex="0" role="button" aria-label="Superconductor flashcard. Tap to flip." title="Click to flip card">
+          <div class="flashcard" id="flashcardElement">
+            
+            <!-- Front Face: Displays only Chemical Formula & subtle Family hint -->
+            <div class="flashcard-face flashcard-front">
+              <div class="flashcard-top-bar">
+                <span class="card-index-pill" id="cardIndexPill">Card 1 of 10</span>
+                <span class="mastery-chip" id="cardMasteryChip" style="display:none;">✓ Mastered</span>
+              </div>
+
+              <div class="flashcard-front-center">
+                <span class="flashcard-prompt-label">Chemical Formula</span>
+                <h3 class="flashcard-formula" id="cardFrontFormula">Formula</h3>
+                <div class="flashcard-hint-badge" id="cardFrontHint">Material Class: --</div>
+              </div>
+
+              <div class="flashcard-flip-prompt">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+                </svg>
+                <span>Tap card to flip &amp; reveal identity</span>
+              </div>
+            </div>
+
+            <!-- Back Face: Name, Tc, Type, Primary Application -->
+            <div class="flashcard-face flashcard-back">
+              <div class="flashcard-top-bar">
+                <span class="card-index-pill" id="cardBackIndexPill">Card 1 of 10</span>
+                <span class="cryo-badge badge-type1" id="cardBackTypeBadge">Type-II</span>
+              </div>
+
+              <div class="flashcard-back-content">
+                <div class="flashcard-identity-row">
+                  <div class="flashcard-thumb-mini">
+                    <img id="cardBackImg" src="" alt="Specimen thumbnail">
+                  </div>
+                  <div>
+                    <h3 class="flashcard-back-name" id="cardBackName">Material Name</h3>
+                    <span class="flashcard-back-formula" id="cardBackFormula">Formula</span>
+                  </div>
+                </div>
+
+                <div class="flashcard-specs-grid">
+                  <div class="flashcard-spec-box">
+                    <span class="spec-label">Critical Temp (T<sub>c</sub>)</span>
+                    <span class="spec-val metric-tc-highlight" id="cardBackTc">-- K</span>
+                  </div>
+                  <div class="flashcard-spec-box">
+                    <span class="spec-label">Material Class</span>
+                    <span class="spec-val" id="cardBackFamily">--</span>
+                  </div>
+                </div>
+
+                <div class="flashcard-app-box">
+                  <span class="app-box-label">Primary Real-World Application:</span>
+                  <p class="app-box-desc" id="cardBackApp">Application details...</p>
+                </div>
+              </div>
+
+              <div class="flashcard-flip-prompt">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+                </svg>
+                <span>Tap card to flip back to formula</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Deck Navigation & Study Buttons -->
+        <div class="flashcard-action-bar">
+          <div class="deck-nav-buttons">
+            <button type="button" id="prevCardBtn" class="clay-btn nav-btn" aria-label="Previous card">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              <span>Prev</span>
+            </button>
+            
+            <button type="button" id="flipCardBtn" class="clay-btn flip-toggle-btn">
+              <span>Flip Card ↺</span>
+            </button>
+
+            <button type="button" id="nextCardBtn" class="clay-btn nav-btn" aria-label="Next card">
+              <span>Next</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Active Recall Mastery Buttons -->
+          <div class="deck-decision-row">
+            <button type="button" id="markReviewBtn" class="clay-btn recall-btn btn-review">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M2.5 2v6h6M21.5 22v-6h-6M22 11.5A10 10 0 0 0 3.2 7.2M2 12.5a10 10 0 0 0 18.8 4.3"></path>
+              </svg>
+              <span>Review Again</span>
+            </button>
+
+            <button type="button" id="markMasteredBtn" class="clay-btn active recall-btn btn-mastered">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Mastered</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: QUICK QUIZ VIEW (3-STAGE FLOW) ==================== -->
+    <section id="quizTab" class="tab-view" style="display:none; padding:24px 16px 84px 16px;">
+      
+      <!-- STAGE 1: QUIZ START SCREEN (Initial Welcome Card) -->
+      <div id="quizStartStage" class="quiz-stage-container">
+        <div class="bento-card quiz-card-welcome">
+          <div class="quiz-badge-wrap">
+            <span class="cryo-badge badge-family">Physics Assessment</span>
+            <span class="cryo-badge badge-type1">5 Specimen Questions</span>
+          </div>
+
+          <div class="quiz-welcome-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="46" height="46" fill="none" stroke="currentColor" stroke-width="2">
+              <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(-30 12 12)"></ellipse>
+              <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(30 12 12)"></ellipse>
+              <circle cx="12" cy="12" r="3" fill="var(--accent-cognac)"></circle>
+            </svg>
+          </div>
+
+          <h2 class="quiz-welcome-title">Superconductor Mastery Challenge</h2>
+          
+          <p class="quiz-punchline">
+            “Zero resistance, maximum brainpower—test your mastery of the 10 superconductors.”
+          </p>
+
+          <p class="quiz-welcome-description">
+            Put your quantum physics and materials science expertise to the test across critical temperatures (T<sub>c</sub>), magnetic field thresholds (H<sub>c</sub>), Type-I vs. Type-II Meissner behavior, and cutting-edge engineering applications.
+          </p>
+
+          <div class="quiz-perks-rack">
+            <div class="quiz-perk-item">
+              <span class="perk-bullet">⚡</span>
+              <span>100% Offline Generation</span>
+            </div>
+            <div class="quiz-perk-item">
+              <span class="perk-bullet">🔬</span>
+              <span>Instant Scientific Explanations</span>
+            </div>
+            <div class="quiz-perk-item">
+              <span class="perk-bullet">🎯</span>
+              <span>Randomized Dynamic Sets</span>
+            </div>
+          </div>
+
+          <div class="quiz-start-action-row">
+            <button id="startQuizBtn" class="clay-btn active quiz-hero-start-btn">
+              <span>Start Quiz</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 2: ACTIVE QUIZ STAGE (Questions 1 to 5) -->
+      <div id="quizActiveStage" class="quiz-stage-container" style="display:none;">
+        <div class="bento-card quiz-active-card">
+          <div class="bento-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <span class="cryo-badge badge-type1" id="quizProgressBadge">Question 1 of 5</span>
+            <span class="cryo-badge badge-family" id="quizScoreBadge">Score: 0 / 5</span>
+          </div>
+
+          <div class="quiz-question-wrap" style="margin-top:10px;">
+            <h2 id="quizQuestionText" class="quiz-question-heading">Loading superconductor question...</h2>
+            <p id="quizQuestionHint" class="quiz-question-subhint">Test your knowledge on Tc thresholds, Meissner effect, and material types.</p>
+          </div>
+
+          <div id="quizOptionsContainer" class="quiz-options-grid" style="display:flex; flex-direction:column; gap:10px; margin-top:18px;">
+            <!-- Populated dynamically by app.js -->
+          </div>
+
+          <div id="quizFeedbackBox" class="quiz-feedback-banner" style="display:none; margin-top:16px; padding:12px 16px; border-radius:12px; font-size:0.88rem; font-weight:600; line-height:1.5;"></div>
+          
+          <!-- Controls Bar during Active Stage: "Generate New Questions" is strictly hidden here -->
+          <div class="quiz-active-controls-bar" style="display:flex; gap:10px; margin-top:18px;">
+            <button id="nextQuizBtn" class="clay-btn active" style="flex:1; display:none; justify-content:center;">Next Question →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 3: QUIZ COMPLETION & RESET SCREEN -->
+      <div id="quizCompletedStage" class="quiz-stage-container" style="display:none;">
+        <div class="bento-card quiz-card-result">
+          <div class="quiz-badge-wrap">
+            <span class="cryo-badge badge-type1">Assessment Complete</span>
+          </div>
+
+          <div class="result-badge-icon" id="resultIcon">🏆</div>
+
+          <h2 id="resultTitle" class="result-headline">Score Summary</h2>
+          
+          <div class="result-score-callout">
+            <div id="resultScoreText" class="result-score-digits">5 / 5</div>
+            <div id="resultPercentageText" class="result-percent-pill">100% Quantum Mastery</div>
+          </div>
+
+          <p id="resultSummaryText" class="result-summary-copy">
+            Evaluating your superconductor performance...
+          </p>
+
+          <!-- Generate New Questions button is displayed ONLY here on completion -->
+          <div class="result-action-row" style="margin-top:22px;">
+            <button id="regenerateQuizBtn" class="clay-btn active result-regen-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" style="margin-right:8px;">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+              </svg>
+              <span>Generate New Questions</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== BENTO DETAIL MODAL / BOTTOM SHEET ==================== -->
+    <div class="cryo-scrim" id="modalScrim"></div>
+
+    <div class="cryo-sheet" id="detailSheet" role="dialog" aria-modal="true">
+      <div class="sheet-drag-handle" id="sheetDragHandle"></div>
+      
+      <div class="sheet-scroll">
+        <!-- Modal Top Identity Block -->
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <div style="display:flex; align-items:center; gap:14px;">
+            <div class="material-thumb-frame modal-thumb-clickable" id="modalThumbBtn" role="button" tabindex="0" title="Click to view enlarged image" aria-label="Enlarge superconductor image">
+              <img id="modalImg" src="" alt="Superconductor preview">
+              <div class="thumb-zoom-badge" title="Enlarge image">
+                <svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" stroke-width="2.5" fill="none">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <line x1="21" y1="21" x2="16" y2="16"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex; gap:6px; margin-bottom:4px;">
+                <span class="cryo-badge badge-type1" id="modalTypeBadge">Type-II</span>
+                <span class="cryo-badge badge-family" id="modalFamilyBadge">Cuprate</span>
+              </div>
+              <h2 id="modalName" style="font-size:1.35rem;">Material Name</h2>
+              <span id="modalFormula" style="font-family:var(--font-mono); font-size:0.95rem; color:var(--accent-cognac); font-weight:700;">Formula</span>
+            </div>
+          </div>
+          <button id="closeModalBtn" style="background:none; border:none; color:var(--text-subtle); cursor:pointer; padding:6px;" aria-label="Close modal">
+            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Asymmetric Bento Metric Grid -->
+        <div class="bento-metric-rack" style="margin-top:6px;">
+          <div class="metric-cell" style="padding:12px;">
+            <span class="metric-cell-label">Critical Temperature (Tc)</span>
+            <span class="metric-cell-value metric-tc-highlight" id="modalTc" style="font-size:1.15rem;">-- K</span>
+          </div>
+          <div class="metric-cell" style="padding:12px;">
+            <span class="metric-cell-label">Critical Magnetic Field (Hc)</span>
+            <span class="metric-cell-value" id="modalHc" style="font-size:1.05rem;">-- T</span>
+          </div>
+        </div>
+
+        <!-- Description Box -->
+        <div style="background:var(--bg-card); border:1px solid var(--border-medium); border-radius:14px; padding:14px;">
+          <span style="font-size:0.7rem; text-transform:uppercase; color:var(--accent-cognac); font-weight:800; letter-spacing:0.5px;">Physical Phenomenon &amp; Discovery</span>
+          <p id="modalDesc" style="font-size:0.9rem; color:var(--text-dark); margin-top:6px; line-height:1.6;"></p>
+        </div>
+
+        <!-- Key Engineering Applications -->
+        <div>
+          <span style="font-size:0.72rem; text-transform:uppercase; color:var(--text-muted); font-weight:800; letter-spacing:0.5px;">Real-World Quantum &amp; Industrial Uses</span>
+          <div id="modalApps" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SIDE-BY-SIDE COMPARE MODAL / SPLIT SCREEN ==================== -->
+    <div class="cryo-scrim" id="compareScrim"></div>
+    <div class="cryo-sheet compare-sheet" id="compareModal" role="dialog" aria-modal="true" aria-labelledby="compareModalTitle">
+      <div class="sheet-drag-handle" id="compareDragHandle"></div>
+      
+      <div class="sheet-scroll compare-scroll">
+        <div class="compare-modal-top-bar">
+          <div>
+            <span class="cryo-badge badge-family">Dual Specimen Analysis</span>
+            <h2 id="compareModalTitle" class="compare-modal-title">Side-by-Side Superconductor Comparison</h2>
+          </div>
+          <button type="button" id="closeCompareModalBtn" class="close-modal-icon-btn" aria-label="Close comparison">
+            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Split-Screen Comparison Content Rendered Dynamically -->
+        <div id="compareTableContainer" class="compare-table-container">
+          <!-- Populated by app.js -->
+        </div>
+
+        <div class="compare-modal-footer">
+          <button type="button" id="compareResetBtn" class="clay-btn">Clear Selection &amp; Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== CRYO-GLASSMORPHISM LIGHTBOX OVERLAY ==================== -->
+    <div class="cryo-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="lightbox-scrim" id="lightboxScrim"></div>
+      
+      <div class="lightbox-content-card" id="lightboxCard">
+        <button class="lightbox-close-btn" id="closeLightboxBtn" aria-label="Close enlarged image">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="lightbox-image-stage">
+          <img id="lightboxImg" src="" alt="Enlarged superconductor image">
+        </div>
+
+        <div class="lightbox-caption">
+          <h3 id="lightboxName" class="lightbox-title">Material Name</h3>
+          <span id="lightboxFormula" class="lightbox-formula">Formula</span>
+          <span class="lightbox-hint">Tap anywhere outside or press Esc to return</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== CRYO BOTTOM DOCK NAVIGATION ==================== -->
+    <nav class="cryo-dock" id="bottomDock">
+      <button class="dock-item active" data-tab="explorerTab" aria-label="Explorer">
+        <div class="dock-icon-box">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+          </svg>
+        </div>
+        <span class="dock-label">Explorer</span>
+      </button>
+
+      <button class="dock-item" data-tab="flashcardsTab" aria-label="Flashcards">
+        <div class="dock-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="5" y="2" width="14" height="15" rx="2"></rect>
+            <path d="M9 17v3a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-2"></path>
+            <line x1="8" y1="7" x2="16" y2="7"></line>
+            <line x1="8" y1="11" x2="13" y2="11"></line>
+          </svg>
+        </div>
+        <span class="dock-label">Flashcards</span>
+      </button>
+
+      <button class="dock-item" data-tab="quizTab" aria-label="Quick Quiz">
+        <div class="dock-icon-box">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </div>
+        <span class="dock-label">Quick Quiz</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- Synchronous Offline Data & App Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
